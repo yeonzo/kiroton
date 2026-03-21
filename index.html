@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 학생 비서</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ════════════════ 랜딩 뷰 ════════════════ -->
+<div id="view-landing" class="view active">
+  <div class="landing-wrap">
+
+    <div class="landing-avatar">
+      <div class="landing-avatar-img">😊</div>
+      <p class="landing-name">김지수</p>
+      <p class="landing-sub">서울대학교 컴퓨터공학과 3학년</p>
+    </div>
+
+    <div class="landing-actions">
+      <button class="landing-btn slack-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"/></svg>
+        Slack 연결
+      </button>
+      <button class="landing-btn add-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        기능 추가
+      </button>
+    </div>
+
+    <div class="briefing-card">
+      <div class="briefing-slides">
+        <div class="briefing-slide active">
+          <p class="briefing-time">오전 브리핑 · 09:00</p>
+          <p class="briefing-msg">오늘 오후 2시 데이터베이스 팀 미팅이 있어요. 발표자료 준비 잊지 마세요.</p>
+        </div>
+        <div class="briefing-slide">
+          <p class="briefing-time">점심 브리핑 · 12:00</p>
+          <p class="briefing-msg">3/23 알고리즘 과제 마감까지 이틀 남았어요. 진행률을 확인해보세요.</p>
+        </div>
+        <div class="briefing-slide">
+          <p class="briefing-time">저녁 브리핑 · 18:00</p>
+          <p class="briefing-msg">운영체제 중간고사 D-4. 오늘 Ch.7 프로세스 동기화 복습을 추천해요.</p>
+        </div>
+      </div>
+      <div class="briefing-dots">
+        <span class="bdot active" data-idx="0"></span>
+        <span class="bdot" data-idx="1"></span>
+        <span class="bdot" data-idx="2"></span>
+      </div>
+    </div>
+
+    <button class="dashboard-btn" id="go-dashboard">
+      Dashboard <span class="dash-arrow">→</span>
+    </button>
+
+  </div>
+</div>
+
+<!-- ════════════════ 대시보드 뷰 ════════════════ -->
+<div id="view-dashboard" class="view active">
+
+  <section class="profile-header">
+    <div class="profile-left">
+      <div class="avatar">😊</div>
+      <div class="profile-info">
+        <h2>서울대학교 / 3학년</h2>
+        <p class="dept">컴퓨터공학과</p>
+        <div class="badges">
+          <span class="badge">학점 3.8 / 4.5</span>
+          <span class="badge">이수학점 90 / 130</span>
+        </div>
+      </div>
+    </div>
+    <div class="weekly-pill">
+      <span class="pill-icon">🎯</span>
+      <div>
+        <p class="pill-label">이번 주</p>
+        <p>과제 3개 · 시험 1개</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="summary-cards">
+    <div class="sum-card" data-nav="schedule">
+      <div class="sum-card-icon purple">📅</div>
+      <h3>중요 일정</h3>
+      <ul class="sum-list">
+        <li><span class="dot purple"></span><span class="sum-date">오늘</span>데이터베이스 팀 미팅</li>
+        <li><span class="dot purple"></span><span class="sum-date">3/23</span>알고리즘 과제 제출</li>
+        <li><span class="dot purple"></span><span class="sum-date">3/25</span>운영체제 중간고사</li>
+      </ul>
+      <span class="sum-arrow">→</span>
+    </div>
+    <div class="sum-card" data-nav="academic">
+      <div class="sum-card-icon blue">📖</div>
+      <h3>중요 학업 정보</h3>
+      <ul class="sum-list">
+        <li><span class="dot blue"></span><span class="sum-date">진행중</span>머신러닝 프로젝트 (60%)</li>
+        <li><span class="dot blue"></span><span class="sum-date">시험</span>운영체제 (4일 남음)</li>
+        <li><span class="dot blue"></span><span class="sum-date">학습</span>데이터베이스 Ch.7-8</li>
+      </ul>
+      <span class="sum-arrow">→</span>
+    </div>
+    <div class="sum-card" data-nav="admin">
+      <div class="sum-card-icon green">📄</div>
+      <h3>중요 행정 정보</h3>
+      <ul class="sum-list">
+        <li><span class="dot green"></span><span class="sum-date">수강신청</span>2차 수강신청 3/28</li>
+        <li><span class="dot green"></span><span class="sum-date">장학금</span>신청 마감 3/30</li>
+        <li><span class="dot green"></span><span class="sum-date">공모전</span>AI 해커톤 참가 추천</li>
+      </ul>
+      <span class="sum-arrow">→</span>
+    </div>
+  </section>
+
+  <section class="mid-section">
+    <div class="cal-card">
+      <div class="cal-header-row">
+        <button id="prev-month">‹</button>
+        <span id="cal-title"></span>
+        <button id="next-month">›</button>
+      </div>
+      <div id="calendar" class="calendar"></div>
+    </div>
+    <div class="upcoming-card">
+      <h3>다가오는 일정</h3>
+      <div id="upcoming-list"></div>
+    </div>
+  </section>
+
+  <section class="checklist-section">
+    <div class="checklist-card">
+      <h3>체크리스트</h3>
+      <ul id="checklist"></ul>
+    </div>
+  </section>
+
+  <div class="motivation-banner">
+    <p>🌤 오늘도 잘 하고 있어요. 이번 주 과제 3개 중 1개 완료했어요 💪</p>
+  </div>
+
+  <section class="summary-cards">
+    <div class="card">
+      <h3 class="card-title">학업 성취도</h3>
+      <div class="grade-list">
+        <div class="grade-row"><span>운영체제</span><span class="gval">3.8</span></div>
+        <div class="progress-bar"><div style="width:76%"></div></div>
+        <div class="grade-row"><span>데이터베이스</span><span class="gval">4.0</span></div>
+        <div class="progress-bar"><div style="width:80%"></div></div>
+        <div class="grade-row"><span>알고리즘</span><span class="gval">3.5</span></div>
+        <div class="progress-bar"><div style="width:70%"></div></div>
+        <div class="grade-row"><span>머신러닝</span><span class="gval">4.2</span></div>
+        <div class="progress-bar"><div style="width:84%"></div></div>
+      </div>
+      <p class="avg-grade">평균 학점 <strong>3.8 / 4.5</strong></p>
+    </div>
+    <div class="card">
+      <h3 class="card-title">시험 준비</h3>
+      <div class="exam-item">
+        <div class="exam-top"><span>운영체제</span><span class="tag blue">진행중</span></div>
+        <p class="exam-desc">Ch.7-8 프로세스 동기화</p>
+        <p class="exam-date">시험일 3/25</p>
+      </div>
+      <div class="exam-item">
+        <div class="exam-top"><span>데이터베이스</span><span class="tag gray">예정</span></div>
+        <p class="exam-desc">Ch.9-10 트랜잭션</p>
+        <p class="exam-date">시험일 4/1</p>
+      </div>
+      <button class="btn-outline">예상 문제 보기</button>
+    </div>
+    <div class="card">
+      <h3 class="card-title">진행중 과제</h3>
+      <div class="task-item">
+        <div class="task-row"><span class="task-name">머신러닝 프로젝트</span><span class="task-pct">60%</span></div>
+        <p class="task-sub">인공지능 · 마감 3/28</p>
+        <div class="progress-bar green"><div style="width:60%"></div></div>
+      </div>
+      <div class="task-item">
+        <div class="task-row"><span class="task-name">데이터베이스 설계</span><span class="task-pct">85%</span></div>
+        <p class="task-sub">데이터베이스 · 마감 3/24</p>
+        <div class="progress-bar green"><div style="width:85%"></div></div>
+      </div>
+      <div class="task-item">
+        <div class="task-row"><span class="task-name">알고리즘 구현</span><span class="task-pct">100%</span></div>
+        <p class="task-sub">알고리즘 · 마감 3/23</p>
+        <div class="progress-bar green"><div style="width:100%"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bottom-section">
+    <div class="card">
+      <h3 class="card-title">교내외 활동</h3>
+      <div class="act-list">
+        <div class="act-item"><div class="act-ico">👥</div><div class="act-info"><strong>AI 연구회</strong><p>회장 · 2024-현재</p></div><span class="tag purple">동아리</span></div>
+        <div class="act-item"><div class="act-ico">🏅</div><div class="act-info"><strong>해커톤 2024</strong><p>우수상 · 2024.02</p></div><span class="tag blue">공모전</span></div>
+        <div class="act-item"><div class="act-ico">❤️</div><div class="act-info"><strong>코딩 멘토링</strong><p>멘토 · 2023-2024</p></div><span class="tag green">봉사</span></div>
+        <div class="act-item"><div class="act-ico">💻</div><div class="act-info"><strong>컴퓨터학회</strong><p>회원 · 2023-현재</p></div><span class="tag gray">학회</span></div>
+      </div>
+      <h3 class="card-title" style="margin-top:20px">추천 공모전</h3>
+      <div class="contest-item"><strong>AI 해커톤 2026</strong><p>4/15-4/16 · 상금 500만원</p><div class="tag-row"><span class="tag purple">인공지능</span><span class="tag blue">팀프로젝트</span></div></div>
+      <div class="contest-item"><strong>대학생 창업 경진대회</strong><p>5/1 마감 · 최대 1000만원</p><div class="tag-row"><span class="tag green">창업</span><span class="tag gray">비즈니스</span></div></div>
+      <div class="contest-item"><strong>오픈소스 컨트리뷰톤</strong><p>3/30-6/30 · 수료증</p><div class="tag-row"><span class="tag blue">오픈소스</span><span class="tag gray">개발</span></div></div>
+    </div>
+    <div class="card">
+      <h3 class="card-title">Communication History</h3>
+      <div class="comm-list">
+        <div class="comm-item unread"><div class="comm-ava">👨‍🏫</div><div class="comm-info"><strong>김교수님</strong><p>연구실 인턴 지원 안내</p><span class="comm-date">3/20</span></div><span class="unread-dot"></span></div>
+        <div class="comm-item unread"><div class="comm-ava">🏫</div><div class="comm-info"><strong>학과사무실</strong><p>장학금 신청 안내</p><span class="comm-date">3/19</span></div><span class="unread-dot"></span></div>
+        <div class="comm-item"><div class="comm-ava">👤</div><div class="comm-info"><strong>팀원_박지현</strong><p>팀플 진행상황 공유</p><span class="comm-date">3/18</span></div></div>
+        <div class="comm-item"><div class="comm-ava">👥</div><div class="comm-info"><strong>동아리</strong><p>MT 참가 신청 확인</p><span class="comm-date">3/17</span></div></div>
+        <div class="comm-item"><div class="comm-ava">👨‍🏫</div><div class="comm-info"><strong>이조교님</strong><p>과제 피드백</p><span class="comm-date">3/16</span></div></div>
+      </div>
+      <div class="unread-box"><p>읽지 않은 메시지</p><strong>2</strong></div>
+    </div>
+  </section>
+
+</div><!-- /view-dashboard -->
+
+<!-- ════════════════ 중요 일정 뷰 ════════════════ -->
+<div id="view-schedule" class="view">
+  <div class="page-header">
+    <button class="back-btn" data-back>← 돌아가기</button>
+    <h2>📅 중요 일정</h2>
+  </div>
+  <div class="page-content">
+    <div class="schedule-grid">
+      <div class="sch-group">
+        <p class="sch-group-label">오늘</p>
+        <div class="sch-item today-item">
+          <div class="sch-time">14:00</div>
+          <div class="sch-body"><strong>데이터베이스 팀 미팅</strong><p>팀플 진행상황 공유 및 역할 분담</p></div>
+          <span class="tag blue">팀플</span>
+        </div>
+      </div>
+      <div class="sch-group">
+        <p class="sch-group-label">3월 22일 (일)</p>
+        <div class="sch-item">
+          <div class="sch-time">10:00</div>
+          <div class="sch-body"><strong>알고리즘 수업</strong><p>그래프 탐색 알고리즘</p></div>
+          <span class="tag purple">수업</span>
+        </div>
+      </div>
+      <div class="sch-group">
+        <p class="sch-group-label">3월 23일 (월)</p>
+        <div class="sch-item urgent">
+          <div class="sch-time">23:59</div>
+          <div class="sch-body"><strong>알고리즘 과제 제출</strong><p>그래프 탐색 구현 과제</p></div>
+          <span class="tag gray">과제</span>
+        </div>
+      </div>
+      <div class="sch-group">
+        <p class="sch-group-label">3월 25일 (수)</p>
+        <div class="sch-item urgent">
+          <div class="sch-time">10:00</div>
+          <div class="sch-body"><strong>운영체제 중간고사</strong><p>Ch.1-8 범위 · 공학관 101호</p></div>
+          <span class="tag red">시험</span>
+        </div>
+      </div>
+      <div class="sch-group">
+        <p class="sch-group-label">3월 28일 (토)</p>
+        <div class="sch-item">
+          <div class="sch-time">15:00</div>
+          <div class="sch-body"><strong>동아리 MT</strong><p>AI 연구회 · 가평 출발</p></div>
+          <span class="tag green">활동</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ 중요 학업 정보 뷰 ════════════════ -->
+<div id="view-academic" class="view">
+  <div class="page-header">
+    <button class="back-btn" data-back>← 돌아가기</button>
+    <h2>📖 중요 학업 정보</h2>
+  </div>
+  <div class="page-content">
+    <div class="acad-grid">
+      <div class="card">
+        <h3 class="card-title">진행중 과제</h3>
+        <div class="task-item">
+          <div class="task-row"><span class="task-name">머신러닝 프로젝트</span><span class="task-pct">60%</span></div>
+          <p class="task-sub">인공지능 · 마감 3/28</p>
+          <div class="progress-bar green"><div style="width:60%"></div></div>
+          <p class="task-detail">데이터셋 전처리 완료, 모델 학습 진행 중</p>
+        </div>
+        <div class="task-item">
+          <div class="task-row"><span class="task-name">데이터베이스 설계</span><span class="task-pct">85%</span></div>
+          <p class="task-sub">데이터베이스 · 마감 3/24</p>
+          <div class="progress-bar green"><div style="width:85%"></div></div>
+          <p class="task-detail">ERD 완성, SQL 쿼리 작성 중</p>
+        </div>
+        <div class="task-item">
+          <div class="task-row"><span class="task-name">알고리즘 구현</span><span class="task-pct">100%</span></div>
+          <p class="task-sub">알고리즘 · 마감 3/23</p>
+          <div class="progress-bar green"><div style="width:100%"></div></div>
+          <p class="task-detail">제출 완료 ✓</p>
+        </div>
+      </div>
+      <div class="card">
+        <h3 class="card-title">시험 준비 현황</h3>
+        <div class="exam-item">
+          <div class="exam-top"><span>운영체제</span><span class="tag blue">진행중</span></div>
+          <p class="exam-desc">Ch.7-8 프로세스 동기화</p>
+          <p class="exam-date">시험일 3/25 · D-4</p>
+          <div class="progress-bar" style="margin-top:8px"><div style="width:55%"></div></div>
+          <p class="task-sub" style="margin-top:4px">학습 진도 55%</p>
+        </div>
+        <div class="exam-item">
+          <div class="exam-top"><span>데이터베이스</span><span class="tag gray">예정</span></div>
+          <p class="exam-desc">Ch.9-10 트랜잭션</p>
+          <p class="exam-date">시험일 4/1 · D-11</p>
+          <div class="progress-bar" style="margin-top:8px"><div style="width:20%"></div></div>
+          <p class="task-sub" style="margin-top:4px">학습 진도 20%</p>
+        </div>
+        <button class="btn-outline" style="margin-top:12px">예상 문제 보기</button>
+      </div>
+      <div class="card">
+        <h3 class="card-title">학업 성취도</h3>
+        <div class="grade-list">
+          <div class="grade-row"><span>운영체제</span><span class="gval">3.8</span></div>
+          <div class="progress-bar"><div style="width:76%"></div></div>
+          <div class="grade-row"><span>데이터베이스</span><span class="gval">4.0</span></div>
+          <div class="progress-bar"><div style="width:80%"></div></div>
+          <div class="grade-row"><span>알고리즘</span><span class="gval">3.5</span></div>
+          <div class="progress-bar"><div style="width:70%"></div></div>
+          <div class="grade-row"><span>머신러닝</span><span class="gval">4.2</span></div>
+          <div class="progress-bar"><div style="width:84%"></div></div>
+        </div>
+        <p class="avg-grade">평균 학점 <strong>3.8 / 4.5</strong></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ 중요 행정 정보 뷰 ════════════════ -->
+<div id="view-admin" class="view">
+  <div class="page-header">
+    <button class="back-btn" data-back>← 돌아가기</button>
+    <h2>📄 중요 행정 정보</h2>
+  </div>
+  <div class="page-content">
+    <div class="admin-grid">
+      <div class="admin-item urgent-card">
+        <div class="admin-icon">📋</div>
+        <div class="admin-body">
+          <strong>2차 수강신청</strong>
+          <p>마감 3/28 (토) 오전 10시</p>
+          <p class="admin-detail">희망 강의 목록 미리 확인 필요. 인기 강의는 빠르게 마감될 수 있어요.</p>
+        </div>
+        <span class="tag red">D-7</span>
+      </div>
+      <div class="admin-item urgent-card">
+        <div class="admin-icon">💰</div>
+        <div class="admin-body">
+          <strong>장학금 신청</strong>
+          <p>마감 3/30 (월) 오후 5시</p>
+          <p class="admin-detail">성적 우수 장학금 신청 기간. 학과 사무실 방문 또는 포털 온라인 신청 가능.</p>
+        </div>
+        <span class="tag orange">D-9</span>
+      </div>
+      <div class="admin-item">
+        <div class="admin-icon">🏆</div>
+        <div class="admin-body">
+          <strong>AI 해커톤 2026 참가 추천</strong>
+          <p>4/15-4/16 · 상금 500만원</p>
+          <p class="admin-detail">인공지능 분야 팀 프로젝트 공모전. 작년 우수상 수상 경험 활용 가능.</p>
+        </div>
+        <span class="tag purple">추천</span>
+      </div>
+      <div class="admin-item">
+        <div class="admin-icon">📝</div>
+        <div class="admin-body">
+          <strong>연구실 인턴 지원</strong>
+          <p>김교수님 연구실 · 마감 4/5</p>
+          <p class="admin-detail">머신러닝 연구실 학부 인턴 모집. 지원서 및 성적증명서 제출 필요.</p>
+        </div>
+        <span class="tag blue">신규</span>
+      </div>
+      <div class="admin-item">
+        <div class="admin-icon">🎓</div>
+        <div class="admin-body">
+          <strong>졸업 요건 확인</strong>
+          <p>이수학점 90/130 · 전공 필수 2과목 미이수</p>
+          <p class="admin-detail">다음 학기 수강 계획 시 전공 필수 과목 우선 배치 권장.</p>
+        </div>
+        <span class="tag gray">확인</span>
+      </div>
+      <div class="admin-item">
+        <div class="admin-icon">🏅</div>
+        <div class="admin-body">
+          <strong>오픈소스 컨트리뷰톤</strong>
+          <p>3/30-6/30 · 수료증 발급</p>
+          <p class="admin-detail">오픈소스 기여 활동. 포트폴리오 강화에 도움이 돼요.</p>
+        </div>
+        <span class="tag green">진행중</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
