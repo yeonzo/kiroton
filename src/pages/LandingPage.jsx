@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import BriefingSlider from '../components/BriefingSlider'
+import ChatBar from '../components/ChatBar'
 
 const briefings = [
   { time: '오전 브리핑 · 09:00', msg: '오늘 오후 2시 데이터베이스 팀 미팅이 있어요. 발표자료 준비 잊지 마세요.' },
@@ -40,6 +41,8 @@ export default function LandingPage({ onNavigate }) {
         </div>
 
         <BriefingSlider briefings={briefings} />
+
+        <ChatBar placeholder="AI 비서에게 물어보세요" />
 
         <button className="dashboard-btn" onClick={() => onNavigate('dashboard')}>
           Dashboard <span className="dash-arrow">→</span>

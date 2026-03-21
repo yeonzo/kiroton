@@ -365,3 +365,29 @@ body {
 .dashboard-btn:hover { background: var(--purple); color: #fff; border-color: var(--purple); }
 .dash-arrow { font-size: 1rem; transition: transform 0.15s; }
 .dashboard-btn:hover .dash-arrow { transform: translateX(4px); }
+
+/* ── 챗 바 ── */
+.chat-bar {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--surface); border-radius: 14px;
+  padding: 10px 14px; margin-bottom: 18px;
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow);
+  transition: border-color 0.2s;
+}
+.chat-bar:focus-within { border-color: var(--purple); }
+.chat-bar-icon { font-size: 1.4rem; flex-shrink: 0; }
+.chat-bar-input {
+  flex: 1; border: none; outline: none; background: none;
+  font-size: 0.9rem; color: var(--text);
+  font-family: inherit;
+}
+.chat-bar-input::placeholder { color: #b0b0c0; }
+.chat-bar-send {
+  width: 34px; height: 34px; border-radius: 10px;
+  background: var(--purple); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; flex-shrink: 0; transition: opacity 0.15s;
+}
+.chat-bar-send:disabled { opacity: 0.4; cursor: default; }
+.chat-bar-send:not(:disabled):hover { opacity: 0.85; }

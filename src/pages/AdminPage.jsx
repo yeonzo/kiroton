@@ -1,34 +1,57 @@
-export default function AdminPage({ onBack }) {
-  const items = [
-    { icon:'📋', title:'2차 수강신청', sub:'마감 3/28 (토) 오전 10시', detail:'희망 강의 목록 미리 확인 필요. 인기 강의는 빠르게 마감될 수 있어요.', tag:'D-7', tagCls:'red', urgent:true },
-    { icon:'💰', title:'장학금 신청', sub:'마감 3/30 (월) 오후 5시', detail:'성적 우수 장학금 신청 기간. 학과 사무실 방문 또는 포털 온라인 신청 가능.', tag:'D-9', tagCls:'orange', urgent:true },
-    { icon:'🏆', title:'AI 해커톤 2026 참가 추천', sub:'4/15-4/16 · 상금 500만원', detail:'인공지능 분야 팀 프로젝트 공모전. 작년 우수상 수상 경험 활용 가능.', tag:'추천', tagCls:'purple' },
-    { icon:'📝', title:'연구실 인턴 지원', sub:'김교수님 연구실 · 마감 4/5', detail:'머신러닝 연구실 학부 인턴 모집. 지원서 및 성적증명서 제출 필요.', tag:'신규', tagCls:'blue' },
-    { icon:'🎓', title:'졸업 요건 확인', sub:'이수학점 90/130 · 전공 필수 2과목 미이수', detail:'다음 학기 수강 계획 시 전공 필수 과목 우선 배치 권장.', tag:'확인', tagCls:'gray' },
-    { icon:'🏅', title:'오픈소스 컨트리뷰톤', sub:'3/30-6/30 · 수료증 발급', detail:'오픈소스 기여 활동. 포트폴리오 강화에 도움이 돼요.', tag:'진행중', tagCls:'green' },
-  ]
+import ChatBar from '../components/ChatBar'
 
+export default function AdminPage({ onBack }) {
   return (
     <div className="view active">
       <div className="page-header">
         <button className="back-btn" onClick={onBack}>← 돌아가기</button>
         <h2>📄 중요 행정 정보</h2>
       </div>
-      <div className="page-content">
-        <div className="admin-grid">
-          {items.map((item, i) => (
-            <div key={i} className={`admin-item ${item.urgent ? 'urgent-card' : ''}`}>
-              <div className="admin-icon">{item.icon}</div>
-              <div className="admin-body">
-                <strong>{item.title}</strong>
-                <p>{item.sub}</p>
-                <p className="admin-detail">{item.detail}</p>
+
+      <ChatBar placeholder="행정 관련 궁금한 점을 물어보세요" />
+
+      <section className="bottom-section">
+        <div className="card">
+          <h3 className="card-title">교내외 활동</h3>
+          <div className="act-list">
+            {[
+              { ico:'👥', name:'AI 연구회', desc:'회장 · 2024-현재', tag:'동아리', tagCls:'purple' },
+              { ico:'🏅', name:'해커톤 2024', desc:'우수상 · 2024.02', tag:'공모전', tagCls:'blue' },
+              { ico:'❤️', name:'코딩 멘토링', desc:'멘토 · 2023-2024', tag:'봉사', tagCls:'green' },
+              { ico:'💻', name:'컴퓨터학회', desc:'회원 · 2023-현재', tag:'학회', tagCls:'gray' },
+            ].map(a => (
+              <div key={a.name} className="act-item">
+                <div className="act-ico">{a.ico}</div>
+                <div className="act-info"><strong>{a.name}</strong><p>{a.desc}</p></div>
+                <span className={`tag ${a.tagCls}`}>{a.tag}</span>
               </div>
-              <span className={`tag ${item.tagCls}`}>{item.tag}</span>
-            </div>
-          ))}
+            ))}
+          </div>
+          <h3 className="card-title" style={{marginTop:20}}>추천 공모전</h3>
+          <div className="contest-item"><strong>AI 해커톤 2026</strong><p>4/15-4/16 · 상금 500만원</p><div className="tag-row"><span className="tag purple">인공지능</span><span className="tag blue">팀프로젝트</span></div></div>
+          <div className="contest-item"><strong>대학생 창업 경진대회</strong><p>5/1 마감 · 최대 1000만원</p><div className="tag-row"><span className="tag green">창업</span><span className="tag gray">비즈니스</span></div></div>
+          <div className="contest-item"><strong>오픈소스 컨트리뷰톤</strong><p>3/30-6/30 · 수료증</p><div className="tag-row"><span className="tag blue">오픈소스</span><span className="tag gray">개발</span></div></div>
         </div>
-      </div>
+        <div className="card">
+          <h3 className="card-title">Communication History</h3>
+          <div className="comm-list">
+            {[
+              { ava:'👨‍🏫', name:'김교수님', msg:'연구실 인턴 지원 안내', date:'3/20', unread:true },
+              { ava:'🏫', name:'학과사무실', msg:'장학금 신청 안내', date:'3/19', unread:true },
+              { ava:'👤', name:'팀원_박지현', msg:'팀플 진행상황 공유', date:'3/18' },
+              { ava:'👥', name:'동아리', msg:'MT 참가 신청 확인', date:'3/17' },
+              { ava:'👨‍🏫', name:'이조교님', msg:'과제 피드백', date:'3/16' },
+            ].map((c, i) => (
+              <div key={i} className={`comm-item ${c.unread ? 'unread' : ''}`}>
+                <div className="comm-ava">{c.ava}</div>
+                <div className="comm-info"><strong>{c.name}</strong><p>{c.msg}</p><span className="comm-date">{c.date}</span></div>
+                {c.unread && <span className="unread-dot" />}
+              </div>
+            ))}
+          </div>
+          <div className="unread-box"><p>읽지 않은 메시지</p><strong>2</strong></div>
+        </div>
+      </section>
     </div>
   )
 }
