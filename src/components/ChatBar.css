@@ -22,3 +22,81 @@
 }
 .chat-bar-send:disabled { opacity: 0.4; cursor: default; }
 .chat-bar-send:not(:disabled):hover { opacity: 0.85; }
+
+/* ── 챗 래퍼 ── */
+.chat-wrapper {
+  margin-bottom: 0;
+}
+
+/* ── AI 답변 영역 ── */
+.chat-response {
+  position: relative;
+  margin-top: 10px;
+  padding: 16px 18px;
+  background: #f4f6fa;
+  border: 1.5px solid #d0d5dd;
+  border-radius: 16px;
+  animation: chatSlideDown 0.25s ease-out;
+}
+
+@keyframes chatSlideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.chat-response--loading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #6b7280;
+  font-size: 0.84rem;
+}
+
+.chat-response-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.chat-response-dots span {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #1B3A5C;
+  animation: dotPulse 1.2s infinite;
+}
+
+.chat-response-dots span:nth-child(2) { animation-delay: 0.2s; }
+.chat-response-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes dotPulse {
+  0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
+  40% { opacity: 1; transform: scale(1); }
+}
+
+.chat-response-close {
+  position: absolute;
+  top: 10px; right: 12px;
+  background: none; border: none;
+  font-size: 0.9rem; color: #6b7280;
+  cursor: pointer; font-family: inherit;
+  font-weight: 600; padding: 2px 6px;
+  line-height: 1;
+  transition: color 0.15s;
+}
+
+.chat-response-close:hover {
+  color: #1B3A5C;
+}
+
+.chat-response-q {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #1B3A5C;
+  margin-bottom: 8px;
+}
+
+.chat-response-a {
+  font-size: 0.85rem;
+  color: #1a1a2e;
+  line-height: 1.6;
+  white-space: pre-line;
+}
