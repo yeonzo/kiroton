@@ -110,6 +110,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'center',
     gap: 22,
     width: '100%',
     maxWidth: 420,
@@ -152,11 +153,15 @@ const styles = {
     fontSize: '0.9rem',
     fontWeight: 600,
     cursor: 'pointer',
-    border: '1.5px solid #c0c0c0',
+    border: '1.5px solid #1B3A5C',
     background: '#fff',
-    color: '#1a1a2e',
+    color: '#1B3A5C',
     fontFamily: 'inherit',
     transition: 'all 0.15s',
+  },
+  actionBtnActive: {
+    background: '#1B3A5C',
+    color: '#fff',
   },
   briefingWrap: {
     width: '100%',
@@ -177,7 +182,7 @@ const styles = {
     fontFamily: 'inherit',
     display: 'flex',
     alignItems: 'center',
-    gap: 8,
+    gap: 0,
     marginTop: 4,
   },
 }
@@ -185,10 +190,11 @@ const styles = {
 export default function LandingPage({ onNavigate }) {
   const [lang, setLang] = useState('kor')
   const [menuOpen, setMenuOpen] = useState(false)
+  const [pressedBtn, setPressedBtn] = useState(null)
 
   const t = lang === 'kor'
-    ? { subtitle: '24/7 대학교 개인 AI 비서', slack: 'Slack', add: '기능 추가', chat: 'AI 비서에게 물어보세요' }
-    : { subtitle: '24/7 Personal AI assistant for University', slack: 'Slack', add: 'Add Feature', chat: 'Ask your AI assistant' }
+    ? { subtitle: '24/7 당신을 위한 대학교 개인 AI 비서', slack: 'Slack', add: '기능 추가', chat: '비서에게 궁금한 점을 질문하세요' }
+    : { subtitle: '24/7 Personal AI assistant for University', slack: 'Slack', add: 'Add Feature', chat: 'Ask your assistant a question' }
 
   return (
     <div style={styles.page}>
@@ -238,8 +244,18 @@ export default function LandingPage({ onNavigate }) {
 
         {/* 액션 버튼 */}
         <div style={styles.actions}>
-          <button style={styles.actionBtn}>{t.slack}</button>
-          <button style={styles.actionBtn}>{t.add}</button>
+          <button
+            style={{ ...styles.actionBtn, ...(pressedBtn === 'slack' ? styles.actionBtnActive : {}) }}
+            onMouseDown={() => setPressedBtn('slack')}
+            onMouseUp={() => setPressedBtn(null)}
+            onMouseLeave={() => setPressedBtn(null)}
+          >{t.slack}</button>
+          <button
+            style={{ ...styles.actionBtn, ...(pressedBtn === 'add' ? styles.actionBtnActive : {}) }}
+            onMouseDown={() => setPressedBtn('add')}
+            onMouseUp={() => setPressedBtn(null)}
+            onMouseLeave={() => setPressedBtn(null)}
+          >{t.add}</button>
         </div>
 
         {/* 브리핑 슬라이더 */}
@@ -254,7 +270,7 @@ export default function LandingPage({ onNavigate }) {
 
         {/* 대시보드 링크 */}
         <button style={styles.dashBtn} onClick={() => onNavigate('dashboard')}>
-          Dashboard <span>→</span>
+          Dashboard→
         </button>
       </div>
     </div>

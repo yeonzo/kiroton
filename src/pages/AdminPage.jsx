@@ -5,7 +5,7 @@ export default function AdminPage({ onBack }) {
     <div className="view active">
       <div className="page-header">
         <button className="back-btn" onClick={onBack}>← 돌아가기</button>
-        <h2>📄 중요 행정 정보</h2>
+        <h2>중요 행정 정보</h2>
       </div>
 
       <ChatBar placeholder="행정 관련 궁금한 점을 물어보세요" />
@@ -15,10 +15,10 @@ export default function AdminPage({ onBack }) {
           <h3 className="card-title">교내외 활동</h3>
           <div className="act-list">
             {[
-              { ico:'👥', name:'AI 연구회', desc:'회장 · 2024-현재', tag:'동아리', tagCls:'purple' },
-              { ico:'🏅', name:'해커톤 2024', desc:'우수상 · 2024.02', tag:'공모전', tagCls:'blue' },
-              { ico:'❤️', name:'코딩 멘토링', desc:'멘토 · 2023-2024', tag:'봉사', tagCls:'green' },
-              { ico:'💻', name:'컴퓨터학회', desc:'회원 · 2023-현재', tag:'학회', tagCls:'gray' },
+              { ico:'', name:'AI 연구회', desc:'회장 · 2024-현재', tag:'동아리', tagCls:'purple' },
+              { ico:'', name:'해커톤 2024', desc:'우수상 · 2024.02', tag:'공모전', tagCls:'blue' },
+              { ico:'', name:'코딩 멘토링', desc:'멘토 · 2023-2024', tag:'봉사', tagCls:'green' },
+              { ico:'', name:'컴퓨터학회', desc:'회원 · 2023-현재', tag:'학회', tagCls:'gray' },
             ].map(a => (
               <div key={a.name} className="act-item">
                 <div className="act-ico">{a.ico}</div>
@@ -36,11 +36,11 @@ export default function AdminPage({ onBack }) {
           <h3 className="card-title">Communication History</h3>
           <div className="comm-list">
             {[
-              { ava:'👨‍🏫', name:'김교수님', msg:'연구실 인턴 지원 안내', date:'3/20', unread:true },
-              { ava:'🏫', name:'학과사무실', msg:'장학금 신청 안내', date:'3/19', unread:true },
-              { ava:'👤', name:'팀원_박지현', msg:'팀플 진행상황 공유', date:'3/18' },
-              { ava:'👥', name:'동아리', msg:'MT 참가 신청 확인', date:'3/17' },
-              { ava:'👨‍🏫', name:'이조교님', msg:'과제 피드백', date:'3/16' },
+              { ava:'', name:'김교수님', msg:'연구실 인턴 지원 안내', date:'3/20', unread:true },
+              { ava:'', name:'학과사무실', msg:'장학금 신청 안내', date:'3/19', unread:true },
+              { ava:'', name:'팀원_박지현', msg:'팀플 진행상황 공유', date:'3/18' },
+              { ava:'', name:'동아리', msg:'MT 참가 신청 확인', date:'3/17' },
+              { ava:'', name:'이조교님', msg:'과제 피드백', date:'3/16' },
             ].map((c, i) => (
               <div key={i} className={`comm-item ${c.unread ? 'unread' : ''}`}>
                 <div className="comm-ava">{c.ava}</div>

@@ -5,13 +5,13 @@ export default function AcademicPage({ onBack }) {
     <div className="view active">
       <div className="page-header">
         <button className="back-btn" onClick={onBack}>← 돌아가기</button>
-        <h2>📖 중요 학업 정보</h2>
+        <h2>중요 학업 정보</h2>
       </div>
 
       <ChatBar placeholder="학업 관련 질문을 해보세요" />
 
       <div className="motivation-banner">
-        <p>🌤 오늘도 잘 하고 있어요. 이번 주 과제 3개 중 1개 완료했어요 💪</p>
+        <p>오늘도 잘 하고 있어요. 이번 주 과제 3개 중 1개 완료했어요</p>
       </div>
 
       <section className="summary-cards">

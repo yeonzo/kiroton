@@ -8,7 +8,7 @@ export default function SchedulePage({ onBack }) {
     <div className="view active">
       <div className="page-header">
         <button className="back-btn" onClick={onBack}>← 돌아가기</button>
-        <h2>📅 중요 일정</h2>
+        <h2>중요 일정</h2>
       </div>
 
       <ChatBar placeholder="일정 관련 요청을 해보세요" />

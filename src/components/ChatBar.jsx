@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function ChatBar({ placeholder = 'AI 비서에게 물어보세요', onSend }) {
+export default function ChatBar({ placeholder = '비서에게 궁금한 점을 질문하세요', onSend }) {
   const [text, setText] = useState('')
 
   const handleSend = () => {
@@ -18,7 +18,7 @@ export default function ChatBar({ placeholder = 'AI 비서에게 물어보세요
 
   return (
     <div className="chat-bar">
-      <div className="chat-bar-icon">🤖</div>
+      <div className="chat-bar-icon"><strong>AI비서</strong></div>
       <input
         className="chat-bar-input"
         type="text"

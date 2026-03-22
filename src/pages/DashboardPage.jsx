@@ -8,7 +8,7 @@ export default function DashboardPage({ onNavigate }) {
       {/* 프로필 헤더 */}
       <section className="profile-header">
         <div className="profile-left">
-          <div className="avatar">😊</div>
+          <div className="avatar"></div>
           <div className="profile-info">
             <h2>서울대학교 / 3학년</h2>
             <p className="dept">컴퓨터공학과</p>
@@ -19,7 +19,7 @@ export default function DashboardPage({ onNavigate }) {
           </div>
         </div>
         <div className="weekly-pill">
-          <span className="pill-icon">🎯</span>
+          <span className="pill-icon"></span>
           <div>
             <p className="pill-label">이번 주</p>
             <p>과제 3개 · 시험 1개</p>
@@ -30,7 +30,7 @@ export default function DashboardPage({ onNavigate }) {
       {/* 요약 카드 */}
       <section className="summary-cards">
         <div className="sum-card" data-nav="schedule" onClick={() => onNavigate('schedule')}>
-          <div className="sum-card-icon purple">📅</div>
+          <div className="sum-card-icon purple"></div>
           <h3>중요 일정</h3>
           <ul className="sum-list">
             <li><span className="dot purple" /><span className="sum-date">오늘</span>데이터베이스 팀 미팅</li>
@@ -40,7 +40,7 @@ export default function DashboardPage({ onNavigate }) {
           <span className="sum-arrow">→</span>
         </div>
         <div className="sum-card" data-nav="academic" onClick={() => onNavigate('academic')}>
-          <div className="sum-card-icon blue">📖</div>
+          <div className="sum-card-icon blue"></div>
           <h3>중요 학업 정보</h3>
           <ul className="sum-list">
             <li><span className="dot blue" /><span className="sum-date">진행중</span>머신러닝 프로젝트 (60%)</li>
@@ -50,7 +50,7 @@ export default function DashboardPage({ onNavigate }) {
           <span className="sum-arrow">→</span>
         </div>
         <div className="sum-card" data-nav="admin" onClick={() => onNavigate('admin')}>
-          <div className="sum-card-icon green">📄</div>
+          <div className="sum-card-icon green"></div>
           <h3>중요 행정 정보</h3>
           <ul className="sum-list">
             <li><span className="dot green" /><span className="sum-date">수강신청</span>2차 수강신청 3/28</li>
