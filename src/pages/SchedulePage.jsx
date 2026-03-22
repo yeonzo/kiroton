@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import './SchedulePage.css'
 import Calendar from '../components/Calendar'
 import Checklist from '../components/Checklist'
 import ChatBar from '../components/ChatBar'

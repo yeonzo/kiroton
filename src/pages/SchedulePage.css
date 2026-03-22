@@ -1,0 +1,125 @@
+/* ── 캘린더 + 일정 ── */
+.mid-section { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 18px; align-items: stretch; }
+.cal-card, .upcoming-card {
+  background: var(--surface); border-radius: var(--radius); padding: 22px;
+  box-shadow: var(--shadow); border: 1.5px solid var(--navy);
+  display: flex; flex-direction: column;
+}
+.cal-header-row {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;
+}
+.cal-header-row span { font-size: 0.95rem; font-weight: 700; }
+.cal-header-row button {
+  background: none; border: 1px solid var(--border); width: 28px; height: 28px;
+  border-radius: 8px; cursor: pointer; font-size: 1rem; color: var(--text-sub);
+  display: flex; align-items: center; justify-content: center; transition: background 0.15s;
+}
+.cal-header-row button:hover { background: var(--gray-light); }
+.calendar { display: grid; grid-template-columns: repeat(7,1fr); gap: 2px; text-align: center; }
+.cal-day-label { font-size: 0.7rem; color: var(--text-sub); padding-bottom: 8px; font-weight: 600; }
+.cal-day-label:first-child { color: #ef4444; }
+.cal-day-label:last-child { color: #3b82f6; }
+.cal-num {
+  font-size: 0.82rem; padding: 5px 0; border-radius: 8px; cursor: pointer;
+  color: var(--text); transition: background 0.1s;
+}
+.cal-num:hover:not(.empty) { background: var(--navy-light); }
+.cal-num.today { background: var(--navy); color: #fff; font-weight: 700; }
+.cal-num.selected { background: var(--navy-light); font-weight: 700; }
+.selected-date-card {
+  background: var(--surface); border-radius: var(--radius); padding: 18px;
+  box-shadow: var(--shadow); border: 1.5px solid var(--navy); margin-top: 14px;
+}
+.selected-date-card h3 { font-size: 0.92rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+.selected-date-card .no-event { font-size: 0.85rem; color: #6b7280; padding: 8px 0; }
+.cal-num.has-event::after {
+  content: ''; display: block; width: 4px; height: 4px; background: var(--navy);
+  border-radius: 50%; margin: 2px auto 0;
+}
+.cal-num.today::after { background: rgba(255,255,255,0.7); }
+.cal-num.sunday { color: #ef4444; }
+.cal-num.saturday { color: #3b82f6; }
+.cal-num.empty { cursor: default; }
+.upcoming-card h3 { font-size: 0.92rem; font-weight: 700; margin-bottom: 12px; }
+.up-scroll {
+  display: flex; flex-direction: column; gap: 10px;
+  overflow-y: auto; flex: 1;
+}
+.up-card {
+  padding: 14px 16px; border-radius: 12px; background: #fff;
+  border: 1px solid var(--border); flex-shrink: 0;
+}
+.up-item {
+  padding: 14px 16px; border-radius: 12px; background: #fff;
+  margin-bottom: 10px; border: 1px solid var(--border);
+}
+.up-date-label { font-size: 0.78rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+.up-detail { display: flex; align-items: center; gap: 14px; }
+.up-time { font-size: 0.82rem; font-weight: 700; color: var(--text-sub); min-width: 42px; flex-shrink: 0; }
+.up-bar { width: 3px; height: 32px; background: var(--navy); border-radius: 2px; flex-shrink: 0; }
+.up-body { flex: 1; }
+.up-title { font-size: 0.88rem; font-weight: 600; color: var(--text); }
+.up-date { font-size: 0.72rem; color: var(--text-sub); margin-top: 2px; }
+
+/* ── 체크리스트 ── */
+.checklist-section { margin-bottom: 18px; }
+.checklist-card {
+  background: var(--surface); border-radius: var(--radius); padding: 22px;
+  box-shadow: var(--shadow); border: 1.5px solid var(--navy);
+}
+.checklist-card h3 { font-size: 0.92rem; font-weight: 700; color: var(--navy); margin-bottom: 0; }
+.checklist-header { display: flex; align-items: center; justify-content: space-between; }
+.checklist-add-btn {
+  background: none; border: 1.5px solid var(--navy); border-radius: 8px;
+  padding: 4px 12px; font-size: 0.78rem; font-weight: 600;
+  color: var(--navy); cursor: pointer; font-family: inherit; transition: all 0.15s;
+}
+.checklist-add-btn:hover { background: var(--navy); color: #fff; }
+.checklist-divider { border: none; border-top: 1px solid var(--border); margin: 12px 0; }
+.checklist-input-row { display: flex; gap: 8px; margin-bottom: 12px; }
+.checklist-input {
+  flex: 1; border: 1.5px solid var(--border); border-radius: 8px;
+  padding: 8px 12px; font-size: 0.85rem; font-family: inherit;
+  outline: none; transition: border-color 0.15s;
+}
+.checklist-input:focus { border-color: var(--navy); }
+.checklist-confirm-btn {
+  background: var(--navy); color: #fff; border: none; border-radius: 8px;
+  padding: 8px 16px; font-size: 0.82rem; font-weight: 600;
+  cursor: pointer; font-family: inherit; transition: opacity 0.15s;
+}
+.checklist-confirm-btn:hover { opacity: 0.85; }
+.checklist-empty { font-size: 0.85rem; color: #b0b0b0; padding: 16px 0; text-align: center; }
+.checklist-delete {
+  background: none; border: none; cursor: pointer; font-size: 0.7rem;
+  color: #b0b0b0; padding: 2px 4px; margin-left: auto; font-family: inherit;
+  transition: color 0.15s; flex-shrink: 0;
+}
+.checklist-delete:hover { color: var(--red); }
+.checklist-ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.checklist-ul li {
+  display: flex; align-items: center; gap: 10px; font-size: 0.9rem;
+  cursor: pointer; padding: 2px 0; transition: opacity 0.15s;
+}
+.checklist-ul li:hover { opacity: 0.75; }
+.check-circle {
+  width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--navy);
+  flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.15s;
+}
+.checklist-ul li.done .check-circle { background: var(--navy); border-color: var(--navy); }
+.checklist-ul li.done .check-circle::after { content: '✓'; color: #fff; font-size: 0.65rem; font-weight: 700; }
+.checklist-ul li.done span:last-child { color: #aaa; text-decoration: line-through; }
+
+/* ── 일정 상세 ── */
+.schedule-grid { display: flex; flex-direction: column; gap: 10px; }
+.sch-group-label { font-size: 0.75rem; font-weight: 700; color: var(--text-sub); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+.sch-item {
+  display: flex; align-items: center; gap: 14px; background: var(--surface);
+  border-radius: 12px; padding: 14px 16px; border: 1px solid var(--border); box-shadow: var(--shadow);
+}
+.sch-item.today-item { border-left: 3px solid var(--navy); }
+.sch-item.urgent { border-left: 3px solid var(--red); }
+.sch-time { font-size: 0.8rem; font-weight: 700; color: var(--text-sub); min-width: 40px; }
+.sch-body { flex: 1; }
+.sch-body strong { font-size: 0.9rem; display: block; margin-bottom: 2px; }
+.sch-body p { font-size: 0.78rem; color: var(--text-sub); }

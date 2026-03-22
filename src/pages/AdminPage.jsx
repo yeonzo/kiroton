@@ -1,3 +1,4 @@
+import './AdminPage.css'
 import ChatBar from '../components/ChatBar'
 
 export default function AdminPage({ onBack }) {

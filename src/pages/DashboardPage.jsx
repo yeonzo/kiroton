@@ -1,3 +1,5 @@
+import './DashboardPage.css'
+
 export default function DashboardPage({ onNavigate }) {
   return (
     <div className="view active">

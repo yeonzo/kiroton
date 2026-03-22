@@ -1,0 +1,43 @@
+/* ── 동기부여 배너 ── */
+.motivation-banner {
+  background: linear-gradient(120deg, #e8edf3, #dbeafe); border-radius: var(--radius);
+  padding: 16px 22px; margin-bottom: 18px; font-size: 0.88rem; color: #444;
+  border: 1px solid rgba(27,58,92,0.1);
+}
+
+/* ── 학업 성취도 ── */
+.grade-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
+.grade-row { display: flex; justify-content: space-between; font-size: 0.83rem; margin-bottom: 4px; }
+.gval { font-weight: 700; color: var(--navy); }
+.progress-bar { height: 5px; background: var(--navy-light); border-radius: 4px; overflow: hidden; margin-bottom: 2px; }
+.progress-bar div { height: 100%; background: var(--navy); border-radius: 4px; transition: width 0.6s ease; }
+.progress-bar.green div { background: var(--green); }
+.progress-bar.green { background: #dcfce7; }
+.avg-grade { text-align: center; font-size: 0.85rem; color: var(--text-sub); margin-top: 10px; }
+.avg-grade strong { color: var(--navy); }
+
+/* ── 시험 준비 ── */
+.exam-item {
+  background: var(--bg); border-radius: 10px; padding: 12px; margin-bottom: 10px;
+  border: 1px solid var(--border);
+}
+.exam-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; font-weight: 600; font-size: 0.88rem; }
+.exam-desc { font-size: 0.82rem; color: var(--text-sub); margin-bottom: 2px; }
+.exam-date { font-size: 0.78rem; color: var(--navy); font-weight: 600; }
+.btn-outline {
+  width: 100%; padding: 10px; background: none; color: var(--navy);
+  border: 1.5px solid var(--navy); border-radius: 10px; font-size: 0.85rem;
+  cursor: pointer; font-weight: 600; transition: all 0.15s;
+}
+.btn-outline:hover { background: var(--navy); color: #fff; }
+
+/* ── 진행중 과제 ── */
+.task-item { margin-bottom: 14px; }
+.task-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px; }
+.task-name { font-size: 0.88rem; font-weight: 600; }
+.task-pct { font-size: 0.78rem; font-weight: 700; color: var(--green); }
+.task-sub { font-size: 0.75rem; color: var(--text-sub); margin-bottom: 5px; }
+.task-detail { font-size: 0.75rem; color: var(--text-sub); margin-top: 5px; }
+
+/* ── 학업 상세 ── */
+.acad-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }

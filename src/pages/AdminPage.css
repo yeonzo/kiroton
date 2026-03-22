@@ -1,0 +1,56 @@
+/* ── 하단 섹션 ── */
+.bottom-section { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 18px; }
+.act-list { display: flex; flex-direction: column; gap: 8px; }
+.act-item {
+  display: flex; align-items: center; gap: 10px; background: var(--bg);
+  border-radius: 10px; padding: 10px 12px; border: 1px solid var(--border);
+}
+.act-ico {
+  width: 36px; height: 36px; background: var(--navy-light); border-radius: 9px;
+  display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0;
+}
+.act-info { flex: 1; }
+.act-info strong { font-size: 0.85rem; display: block; }
+.act-info p { font-size: 0.75rem; color: var(--text-sub); }
+.contest-item {
+  background: var(--bg); border-radius: 10px; padding: 11px 12px;
+  margin-bottom: 8px; border: 1px solid var(--border);
+}
+.contest-item strong { font-size: 0.85rem; display: block; margin-bottom: 3px; }
+.contest-item p { font-size: 0.78rem; color: var(--text-sub); }
+
+/* ── Communication ── */
+.comm-list { display: flex; flex-direction: column; gap: 8px; }
+.comm-item {
+  display: flex; align-items: center; gap: 10px; background: var(--bg);
+  border-radius: 10px; padding: 10px 12px; border: 1px solid var(--border); position: relative;
+}
+.comm-item.unread { background: #eef2ff; border-color: #c7d2fe; }
+.comm-ava {
+  width: 36px; height: 36px; background: #e0e7ff; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0;
+}
+.comm-info { flex: 1; }
+.comm-info strong { font-size: 0.85rem; display: block; }
+.comm-info p { font-size: 0.78rem; color: var(--text-sub); }
+.comm-date { font-size: 0.72rem; color: #aaa; }
+.unread-dot { width: 7px; height: 7px; background: #3b82f6; border-radius: 50%; flex-shrink: 0; }
+.unread-box {
+  text-align: center; padding: 14px; background: var(--bg); border-radius: 10px;
+  font-size: 0.82rem; color: var(--text-sub); border: 1px solid var(--border); margin-top: 8px;
+}
+.unread-box strong { display: block; font-size: 1.6rem; color: #3b82f6; font-weight: 700; }
+
+/* ── 행정 상세 ── */
+.admin-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+.admin-item {
+  background: var(--surface); border-radius: 12px; padding: 18px;
+  border: 1px solid var(--border); box-shadow: var(--shadow);
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.admin-item.urgent-card { border-left: 3px solid var(--red); }
+.admin-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+.admin-body { flex: 1; }
+.admin-body strong { font-size: 0.9rem; display: block; margin-bottom: 4px; }
+.admin-body p { font-size: 0.8rem; color: var(--text-sub); margin-bottom: 2px; }
+.admin-detail { font-size: 0.78rem; color: #9ca3af; margin-top: 6px; line-height: 1.5; }

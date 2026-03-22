@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import './LandingPage.css'
 import BriefingSlider from '../components/BriefingSlider'
 import ChatBar from '../components/ChatBar'
 import FeaturePopup from '../components/FeaturePopup'

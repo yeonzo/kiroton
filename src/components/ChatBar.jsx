@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import './ChatBar.css'
 
 export default function ChatBar({ placeholder = '비서에게 궁금한 점을 질문하세요', onSend }) {
   const [text, setText] = useState('')

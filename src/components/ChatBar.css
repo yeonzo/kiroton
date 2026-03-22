@@ -1,0 +1,24 @@
+/* ── 챗 바 ── */
+.chat-bar {
+  display: flex; align-items: center; gap: 12px;
+  background: #fff; border-radius: 28px;
+  padding: 10px 16px; margin-bottom: 0;
+  border: 1.5px solid #c0c0c0;
+  transition: border-color 0.2s;
+}
+.chat-bar:focus-within { border-color: #1B3A5C; }
+.chat-bar-icon { font-size: 0.8rem; flex-shrink: 0; font-weight: 700; color: var(--navy); }
+.chat-bar-input {
+  flex: 1; border: none; outline: none; background: none;
+  font-size: 0.9rem; color: var(--text);
+  font-family: inherit;
+}
+.chat-bar-input::placeholder { color: #b0b0c0; }
+.chat-bar-send {
+  width: 34px; height: 34px; border-radius: 10px;
+  background: var(--navy); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; flex-shrink: 0; transition: opacity 0.15s;
+}
+.chat-bar-send:disabled { opacity: 0.4; cursor: default; }
+.chat-bar-send:not(:disabled):hover { opacity: 0.85; }
