@@ -17,6 +17,54 @@ export default function DashboardPage({ onNavigate }) {
   const [weeklyGoal, setWeeklyGoal] = useState('과제 3개 · 시험 1개')
   const [isEditingGoal, setIsEditingGoal] = useState(false)
   const [goalDraft, setGoalDraft] = useState(weeklyGoal)
+  const [widgets, setWidgets] = useState([])
+  const [showWidgetPicker, setShowWidgetPicker] = useState(false)
+
+  const widgetOptions = [
+    { id: 'project', label: '프로젝트', icon: '📋' },
+    { id: 'career', label: '취업', icon: '💼' },
+    { id: 'communication', label: '커뮤니케이션', icon: '💬' },
+  ]
+
+  const widgetContent = {
+    project: {
+      title: '프로젝트',
+      items: [
+        { dot: 'purple', label: '진행중', text: '캡스톤 디자인 - UI 개발' },
+        { dot: 'purple', label: 'D-5', text: '오픈소스 프로젝트 PR 제출' },
+        { dot: 'purple', label: '예정', text: '해커톤 팀 빌딩' },
+      ],
+    },
+    career: {
+      title: '취업',
+      items: [
+        { dot: 'blue', label: '마감임박', text: '네이버 인턴십 지원 (~3/28)' },
+        { dot: 'blue', label: '준비중', text: '코딩테스트 대비 (백준 골드)' },
+        { dot: 'blue', label: '예정', text: '모의 면접 스터디 (4/2)' },
+      ],
+    },
+    communication: {
+      title: '커뮤니케이션',
+      items: [
+        { dot: 'green', label: '읽지않음', text: '팀 프로젝트 슬랙 메시지 3건' },
+        { dot: 'green', label: '오늘', text: '교수님 면담 예약 확인' },
+        { dot: 'green', label: '알림', text: '학과 공지사항 업데이트' },
+      ],
+    },
+  }
+
+  const addWidget = (id) => {
+    if (!widgets.find((w) => w === id)) {
+      setWidgets([...widgets, id])
+    }
+    setShowWidgetPicker(false)
+  }
+
+  const removeWidget = (id) => {
+    setWidgets(widgets.filter((w) => w !== id))
+  }
+
+  const availableOptions = widgetOptions.filter((o) => !widgets.includes(o.id))
 
   const startEditField = (field) => {
     setFieldDraft(field === 'gpa' ? gpa : credits)
@@ -137,6 +185,50 @@ export default function DashboardPage({ onNavigate }) {
           </ul>
           <span className="sum-arrow">→</span>
         </div>
+
+        {/* 추가된 위젯 카드들 */}
+        {widgets.map((wId) => {
+          const data = widgetContent[wId]
+          return (
+            <div className="sum-card widget-card" key={wId} onClick={() => onNavigate(wId)}>
+              <button className="widget-remove-btn" onClick={(e) => { e.stopPropagation(); removeWidget(wId) }} aria-label="위젯 제거">✕</button>
+              <h3>{data.title}</h3>
+              <ul className="sum-list">
+                {data.items.map((item, i) => (
+                  <li key={i}><span className={`dot ${item.dot}`} /><span className="sum-date">{item.label}</span>{item.text}</li>
+                ))}
+              </ul>
+              <span className="sum-arrow">→</span>
+            </div>
+          )
+        })}
+
+        {/* 위젯 추가 카드 */}
+        {availableOptions.length > 0 && (
+          <div className={`sum-card widget-add-card ${showWidgetPicker ? 'picker-open' : ''}`} onClick={() => setShowWidgetPicker(!showWidgetPicker)}>
+            {!showWidgetPicker ? (
+              <div className="widget-add-placeholder">
+                <span className="widget-add-icon">+</span>
+                <p>위젯 추가</p>
+              </div>
+            ) : (
+              <div className="widget-picker">
+                <h3>위젯 선택</h3>
+                <div className="widget-options">
+                  {availableOptions.map((opt) => (
+                    <button
+                      key={opt.id}
+                      className="widget-option-btn"
+                      onClick={(e) => { e.stopPropagation(); addWidget(opt.id) }}
+                    >
+                      {opt.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
       </section>
     </div>
   )

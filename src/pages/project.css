@@ -1,0 +1,105 @@
+.project-view { background: #fff; }
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.project-card {
+  background: var(--surface);
+  border: 2px solid #1B3A5C;
+  border-radius: var(--radius);
+  padding: 22px 20px;
+  box-shadow: var(--shadow);
+}
+
+.project-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+.project-card-header h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #222;
+}
+
+.project-status {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+.status-active { background: #e8f5e9; color: #2e7d32; }
+.status-urgent { background: #fff3e0; color: #e65100; }
+.status-upcoming { background: #e3f2fd; color: #1565c0; }
+
+.project-progress-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.project-progress-bar {
+  flex: 1;
+  height: 8px;
+  background: #eee;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.project-progress-fill {
+  height: 100%;
+  background: #1B3A5C;
+  border-radius: 4px;
+  transition: width 0.3s;
+}
+.project-progress-text {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #1B3A5C;
+  min-width: 36px;
+  text-align: right;
+}
+
+.project-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.76rem;
+  color: #888;
+  margin-bottom: 12px;
+}
+
+.project-divider {
+  border-top: 1px solid #e8e8e8;
+  margin-bottom: 12px;
+}
+
+.project-tasks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.project-tasks li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: #444;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.12s;
+}
+.project-tasks li:hover { background: #f5f7fa; }
+.project-tasks li.done { color: #aaa; text-decoration: line-through; }
+.task-check {
+  font-size: 0.85rem;
+  color: #1B3A5C;
+  width: 18px;
+  text-align: center;
+}
+.project-tasks li.done .task-check { color: #aaa; }
