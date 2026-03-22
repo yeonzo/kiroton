@@ -11,6 +11,8 @@ export default function AcademicPage({ onBack }) {
 
       <ChatBar placeholder="학업 관련 질문을 해보세요" />
 
+      <div style={{ height: 14 }} />
+
       <div className="motivation-banner">
         <p>오늘도 잘 하고 있어요. 이번 주 과제 3개 중 1개 완료했어요</p>
       </div>
@@ -40,7 +42,6 @@ export default function AcademicPage({ onBack }) {
             <p className="exam-desc">Ch.9-10 트랜잭션</p>
             <p className="exam-date">시험일 4/1</p>
           </div>
-          <button className="btn-outline">예상 문제 보기</button>
         </div>
         <div className="card">
           <h3 className="card-title">진행중 과제</h3>
