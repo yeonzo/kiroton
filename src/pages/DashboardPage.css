@@ -1,51 +1,242 @@
+/* ── 대시보드 배경 흰색 ── */
+.dashboard-view {
+  background: #ffffff;
+}
+
 /* ── 프로필 헤더 ── */
 .profile-header {
-  background: linear-gradient(120deg, #e8edf3 0%, #dbeafe 100%);
-  border-radius: 20px; padding: 28px 32px;
-  display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;
+  background: linear-gradient(120deg, #1B3A5C 0%, #dbeafe 100%);
+  border-radius: 20px;
+  padding: 28px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
 }
-.profile-left { display: flex; align-items: center; gap: 18px; }
+.profile-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
 .avatar {
-  width: 68px; height: 68px; background: #b8c9de; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center; font-size: 1.9rem; flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
 }
-.profile-info h2 { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.3px; }
-.dept { color: var(--text-sub); font-size: 0.88rem; margin: 3px 0 10px; }
-.badges { display: flex; gap: 8px; flex-wrap: wrap; }
+.profile-info h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: #fff;
+}
+.dept {
+  color: rgba(255,255,255,0.8);
+  font-size: 0.88rem;
+  margin: 3px 0 10px;
+}
+.badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
 .badge {
-  background: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.6);
-  border-radius: 20px; padding: 4px 12px; font-size: 0.78rem; color: #444; font-weight: 500;
+  background: rgba(255,255,255,0.85);
+  border: 1px solid rgba(255,255,255,0.6);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.78rem;
+  color: #444;
+  font-weight: 500;
 }
 .weekly-pill {
-  background: rgba(255,255,255,0.9); border-radius: 14px; padding: 14px 20px;
-  display: flex; align-items: center; gap: 12px; box-shadow: var(--shadow);
+  background: rgba(255,255,255,0.9);
+  border-radius: 14px;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--shadow);
 }
-.pill-icon { font-size: 1.5rem; }
-.weekly-pill p { font-size: 0.82rem; color: var(--text-sub); }
-.pill-label { font-weight: 700; color: var(--navy); font-size: 0.85rem; margin-bottom: 2px; }
+.pill-icon {
+  font-size: 1.5rem;
+}
+.weekly-pill p {
+  font-size: 0.82rem;
+  color: var(--text-sub);
+}
+.pill-label {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 0.85rem;
+  margin-bottom: 2px;
+}
+.pill-label-top {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: #999;
+  letter-spacing: 0.3px;
+  margin-bottom: 1px;
+}
+.pill-label {
+  font-weight: 700;
+  color: #1B3A5C;
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+/* ── SVG 편집 아이콘 ── */
+.edit-icon {
+  margin-left: 4px;
+  vertical-align: middle;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.edit-icon:hover {
+  color: var(--navy);
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ── 이번 주 목표 편집 ── */
+.goal-text {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.goal-edit-btn {
+  background: none;
+  border: none;
+  padding: 2px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  color: #999;
+  transition: color 0.15s;
+}
+.goal-edit-btn:hover {
+  color: var(--navy);
+}
+.goal-input {
+  font-family: inherit;
+  font-size: 0.82rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 3px 8px;
+  width: 160px;
+  outline: none;
+}
+.goal-input:focus {
+  border-color: var(--blue);
+}
+
+/* ── 뱃지 편집 ── */
+.badge-edit-btn {
+  background: none;
+  border: none;
+  padding: 2px;
+  margin-left: 2px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  color: #999;
+  transition: color 0.15s;
+}
+.badge-edit-btn:hover {
+  color: var(--navy);
+}
+.badge-input {
+  font-family: inherit;
+  font-size: 0.78rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 6px;
+  width: 40px;
+  outline: none;
+  text-align: center;
+}
+.badge-input:focus {
+  border-color: var(--blue);
+}
 
 /* ── 요약 카드 ── */
-/* ── 요약 카드 ── */
 .sum-card {
-  background: var(--surface); border-radius: var(--radius); padding: 22px 20px 48px;
-  box-shadow: var(--shadow); border: 1px solid var(--border); cursor: pointer;
-  position: relative; transition: transform 0.15s, box-shadow 0.15s;
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 22px 20px 48px;
+  box-shadow: var(--shadow);
+  border: 2px solid #1B3A5C;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.15s, box-shadow 0.15s;
 }
-.sum-card:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.09); }
-.sum-card-icon { font-size: 1.5rem; margin-bottom: 10px; }
-.sum-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 14px; }
-.sum-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
-.sum-list li { display: flex; align-items: center; gap: 8px; font-size: 0.83rem; color: #444; }
-.dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.sum-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.09);
+}
+.sum-card h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.sum-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.sum-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.83rem;
+  color: #444;
+}
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
 .dot.purple { background: var(--purple); }
-.dot.blue { background: var(--blue); }
-.dot.green { background: var(--green); }
-.sum-date { font-size: 0.75rem; font-weight: 600; white-space: nowrap; }
-.sum-card[data-nav="schedule"] .sum-date { color: var(--navy); }
-.sum-card[data-nav="academic"] .sum-date { color: var(--blue); }
-.sum-card[data-nav="admin"] .sum-date { color: var(--green); }
-.sum-arrow {
-  position: absolute; bottom: 16px; right: 18px; font-size: 1rem;
-  color: var(--navy); font-weight: 600; transition: transform 0.15s;
+.dot.blue { background: #F5A623; }
+.dot.green { background: #B5A04E; }
+.sum-date {
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
 }
-.sum-card:hover .sum-arrow { transform: translateX(3px); }
+.sum-card[data-nav="schedule"] .sum-date { color: var(--navy); }
+.sum-card[data-nav="academic"] .sum-date { color: #F5A623; }
+.sum-card[data-nav="admin"] .sum-date { color: #B5A04E; }
+.sum-arrow {
+  position: absolute;
+  bottom: 16px;
+  right: 18px;
+  font-size: 1rem;
+  color: var(--navy);
+  font-weight: 600;
+  transition: transform 0.15s;
+}
+.sum-card:hover .sum-arrow {
+  transform: translateX(3px);
+}
+
+/* ── 반응형 ── */
+@media (max-width: 860px) {
+  .profile-header {
+    flex-direction: column;
+    gap: 14px;
+  }
+  .profile-left {
+    flex-direction: column;
+    text-align: center;
+  }
+  .badges {
+    justify-content: center;
+  }
+}
