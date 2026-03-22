@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import BriefingSlider from '../components/BriefingSlider'
 import ChatBar from '../components/ChatBar'
+import FeaturePopup from '../components/FeaturePopup'
 import mascotImg from '../assets/mascot.png'
 
 const briefings = [
@@ -191,6 +192,7 @@ export default function LandingPage({ onNavigate }) {
   const [lang, setLang] = useState('kor')
   const [menuOpen, setMenuOpen] = useState(false)
   const [pressedBtn, setPressedBtn] = useState(null)
+  const [featureOpen, setFeatureOpen] = useState(false)
 
   const t = lang === 'kor'
     ? { subtitle: '24/7 당신을 위한 대학교 개인 AI 비서', slack: 'Slack', add: '기능 추가', chat: '비서에게 궁금한 점을 질문하세요' }
@@ -255,6 +257,7 @@ export default function LandingPage({ onNavigate }) {
             onMouseDown={() => setPressedBtn('add')}
             onMouseUp={() => setPressedBtn(null)}
             onMouseLeave={() => setPressedBtn(null)}
+            onClick={() => setFeatureOpen(true)}
           >{t.add}</button>
         </div>
 
@@ -273,6 +276,8 @@ export default function LandingPage({ onNavigate }) {
           Dashboard→
         </button>
       </div>
+      {/* 기능 추가 팝업 */}
+      {featureOpen && <FeaturePopup onClose={() => setFeatureOpen(false)} />}
     </div>
   )
 }
