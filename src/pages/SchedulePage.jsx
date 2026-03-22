@@ -12,8 +12,45 @@ const eventsByDate = {
   '2026-03-28': [{ time: '15:00', title: '동아리 MT' }],
 }
 
+// 날짜순 정렬된 다가오는 일정 리스트 생성
+function getUpcomingEvents() {
+  const today = new Date()
+  today.setHours(0, 0, 0, 0)
+  const upcoming = []
+  for (const [date, events] of Object.entries(eventsByDate)) {
+    const d = new Date(date + 'T00:00:00')
+    if (d >= today) {
+      for (const ev of events) {
+        upcoming.push({ date, ...ev })
+      }
+    }
+  }
+  upcoming.sort((a, b) => {
+    if (a.date !== b.date) return a.date.localeCompare(b.date)
+    return a.time.localeCompare(b.time)
+  })
+  return upcoming
+}
+
+function formatDateLabel(dateStr) {
+  const d = new Date(dateStr + 'T00:00:00')
+  const month = d.getMonth() + 1
+  const day = d.getDate()
+  const dayNames = ['일', '월', '화', '수', '목', '금', '토']
+  const dow = dayNames[d.getDay()]
+  const today = new Date()
+  today.setHours(0, 0, 0, 0)
+  const diff = Math.round((d - today) / (1000 * 60 * 60 * 24))
+  let label = `${month}/${day} (${dow})`
+  if (diff === 0) label = `오늘 · ${label}`
+  else if (diff === 1) label = `내일 · ${label}`
+  else if (diff > 0) label = `D-${diff} · ${label}`
+  return label
+}
+
 export default function SchedulePage({ onBack }) {
   const [selectedDate, setSelectedDate] = useState(null)
+  const upcoming = getUpcomingEvents()
 
   const selectedEvents = selectedDate ? (eventsByDate[selectedDate] || []) : []
   const dateLabel = selectedDate
@@ -51,6 +88,34 @@ export default function SchedulePage({ onBack }) {
               }
             </div>
           )}
+        </div>
+
+        {/* 다가오는 일정 박스 */}
+        <div className="upcoming-card">
+          <h3 className="upcoming-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 3v6"/><path d="M15 3v6"/><path d="M9 15h2"/><path d="M9 19h2"/><path d="M15 15h2"/><path d="M15 19h2"/>
+            </svg>
+            다가오는 일정
+          </h3>
+          <div className="up-scroll">
+            {upcoming.length === 0 ? (
+              <p className="no-event">다가오는 일정이 없습니다</p>
+            ) : (
+              upcoming.map((ev, i) => (
+                <div key={i} className="up-item-row">
+                  <div className="up-date-badge">{formatDateLabel(ev.date)}</div>
+                  <div className="up-detail">
+                    <span className="up-time">{ev.time}</span>
+                    <span className="up-bar" />
+                    <div className="up-body">
+                      <p className="up-title">{ev.title}</p>
+                    </div>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
         </div>
       </section>
 

@@ -41,6 +41,11 @@
 .cal-num.saturday { color: #3b82f6; }
 .cal-num.empty { cursor: default; }
 .upcoming-card h3 { font-size: 0.92rem; font-weight: 700; margin-bottom: 12px; }
+.upcoming-title {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.92rem; font-weight: 700; color: var(--navy); margin-bottom: 12px;
+}
+.upcoming-title svg { color: var(--navy); flex-shrink: 0; }
 .up-scroll {
   display: flex; flex-direction: column; gap: 10px;
   overflow-y: auto; flex: 1;
@@ -60,6 +65,17 @@
 .up-body { flex: 1; }
 .up-title { font-size: 0.88rem; font-weight: 600; color: var(--text); }
 .up-date { font-size: 0.72rem; color: var(--text-sub); margin-top: 2px; }
+
+/* 다가오는 일정 아이템 */
+.up-item-row {
+  padding: 12px 14px; border-radius: 10px; background: var(--bg, #f5f5f8);
+  border: 1px solid var(--border); margin-bottom: 0;
+}
+.up-date-badge {
+  font-size: 0.75rem; font-weight: 700; color: var(--navy);
+  margin-bottom: 8px;
+}
+.no-event { font-size: 0.85rem; color: #b0b0b0; padding: 16px 0; text-align: center; }
 
 /* ── 체크리스트 ── */
 .checklist-section { margin-bottom: 18px; }
