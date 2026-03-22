@@ -3,9 +3,10 @@ import { useState } from 'react'
 const EVENT_DATES = ['2026-03-21','2026-03-22','2026-03-23','2026-03-25','2026-03-28']
 const DAY_LABELS = ['일','월','화','수','목','금','토']
 
-export default function Calendar() {
+export default function Calendar({ onSelectDate }) {
   const [year, setYear] = useState(2026)
   const [month, setMonth] = useState(2) // 0-indexed, 2 = March
+  const [selected, setSelected] = useState(null)
 
   const title = `${year}년 ${month + 1}월`
   const firstDay = new Date(year, month, 1).getDay()
@@ -21,6 +22,11 @@ export default function Calendar() {
     else setMonth(m => m + 1)
   }
 
+  const handleClick = (dateStr) => {
+    setSelected(dateStr)
+    onSelectDate?.(dateStr)
+  }
+
   const days = []
   for (let i = 0; i < firstDay; i++) {
     days.push(<div key={`e${i}`} className="cal-num empty" />)
@@ -33,7 +39,8 @@ export default function Calendar() {
     if (dow === 6) cls += ' saturday'
     if (dateStr === todayStr) cls += ' today'
     if (EVENT_DATES.includes(dateStr)) cls += ' has-event'
-    days.push(<div key={d} className={cls}>{d}</div>)
+    if (dateStr === selected) cls += ' selected'
+    days.push(<div key={d} className={cls} onClick={() => handleClick(dateStr)}>{d}</div>)
   }
 
   return (
