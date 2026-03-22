@@ -1,7 +1,11 @@
+import { useState } from 'react'
 import './AdminPage.css'
 import ChatBar from '../components/ChatBar'
+import AdminDetailPopup from '../components/AdminDetailPopup'
 
 export default function AdminPage({ onBack }) {
+  const [selectedItem, setSelectedItem] = useState(null)
+
   return (
     <div className="view active admin-view">
       <div className="page-header">
@@ -15,7 +19,7 @@ export default function AdminPage({ onBack }) {
         <div className="admin-card">
           <h3 className="admin-card-title">공모전 · 대외활동 / 장학금</h3>
           <ul className="admin-list">
-            <li>
+            <li onClick={() => setSelectedItem('AI 해커톤 2026')}>
               <span className="admin-date">4/15</span>
               <span className="admin-bar" />
               <div>
@@ -23,7 +27,7 @@ export default function AdminPage({ onBack }) {
                 <p>4/15-4/16 · 상금 500만원</p>
               </div>
             </li>
-            <li>
+            <li onClick={() => setSelectedItem('대학생 창업 경진대회')}>
               <span className="admin-date">5/1</span>
               <span className="admin-bar" />
               <div>
@@ -31,7 +35,7 @@ export default function AdminPage({ onBack }) {
                 <p>5/1 마감 · 최대 1000만원</p>
               </div>
             </li>
-            <li>
+            <li onClick={() => setSelectedItem('오픈소스 컨트리뷰톤')}>
               <span className="admin-date">6/30</span>
               <span className="admin-bar" />
               <div>
@@ -39,7 +43,7 @@ export default function AdminPage({ onBack }) {
                 <p>3/30-6/30 · 수료증</p>
               </div>
             </li>
-            <li>
+            <li onClick={() => setSelectedItem('교내 성적 장학금')}>
               <span className="admin-date">3/30</span>
               <span className="admin-bar" />
               <div>
@@ -47,7 +51,7 @@ export default function AdminPage({ onBack }) {
                 <p>신청 마감 3/30</p>
               </div>
             </li>
-            <li>
+            <li onClick={() => setSelectedItem('국가근로장학금')}>
               <span className="admin-date">4/5</span>
               <span className="admin-bar" />
               <div>
@@ -60,7 +64,7 @@ export default function AdminPage({ onBack }) {
 
         <div className="admin-card">
           <h3 className="admin-card-title">학사 일정</h3>
-          <ul className="admin-list">
+          <ul className="admin-list admin-list--static">
             <li>
               <span className="admin-date">3/28</span>
               <span className="admin-bar" />
@@ -96,6 +100,13 @@ export default function AdminPage({ onBack }) {
           </ul>
         </div>
       </section>
+
+      {selectedItem && (
+        <AdminDetailPopup
+          itemName={selectedItem}
+          onClose={() => setSelectedItem(null)}
+        />
+      )}
     </div>
   )
 }

@@ -52,6 +52,7 @@
 }
 .weekly-pill {
   background: rgba(255,255,255,0.9);
+  border: 2.5px solid #1B3A5C;
   border-radius: 14px;
   padding: 14px 20px;
   display: flex;
