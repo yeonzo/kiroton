@@ -5,6 +5,31 @@
   border: 1px solid rgba(27,58,92,0.1);
 }
 
+/* ── 카드 타이틀 구분선 ── */
+.card-title {
+  padding-bottom: 10px; margin-bottom: 14px;
+  border-bottom: 1px solid var(--border, #e0e4ea);
+}
+.card-title-row {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.card-title-row .card-title {
+  margin-bottom: 0; padding-bottom: 0; border-bottom: none;
+}
+.card-title-row + .grade-content {
+  padding-top: 14px; margin-top: 10px;
+  border-top: 1px solid var(--border, #e0e4ea);
+}
+.card-edit-btn {
+  background: none; border: none; cursor: pointer;
+  color: var(--text-sub, #6b7280); padding: 4px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 6px; transition: all 0.15s;
+}
+.card-edit-btn:hover { color: var(--navy, #1D2475); background: var(--navy-light, #e8eaf6); }
+
+.grade-content { padding: 4px 0; }
+
 /* ── 학업 성취도 ── */
 .grade-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
 .grade-row { display: flex; justify-content: space-between; font-size: 0.83rem; margin-bottom: 4px; }
@@ -32,7 +57,10 @@
 .btn-outline:hover { background: var(--navy); color: #fff; }
 
 /* ── 진행중 과제 ── */
-.task-item { margin-bottom: 14px; }
+.task-item {
+  background: var(--bg, #f5f5f8); border-radius: 10px; padding: 12px;
+  margin-bottom: 10px; border: 1px solid var(--border, #e0e4ea);
+}
 .task-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px; }
 .task-name { font-size: 0.88rem; font-weight: 600; }
 .task-pct { font-size: 0.78rem; font-weight: 700; color: var(--green); }
@@ -41,3 +69,67 @@
 
 /* ── 학업 상세 ── */
 .acad-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+
+/* ── 노션 연동 버튼 스타일 ── */
+.exam-bottom {
+  display: flex; justify-content: space-between; align-items: center; margin-top: 6px;
+}
+.task-bottom {
+  display: flex; justify-content: space-between; align-items: center; margin-top: 2px;
+}
+.notion-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 12px; border-radius: 20px;
+  font-size: 0.72rem; font-weight: 600;
+  color: var(--navy, #1D2475); background: transparent;
+  border: 1.5px solid var(--navy, #1D2475); text-decoration: none;
+  transition: all 0.15s; cursor: pointer; flex-shrink: 0;
+}
+.notion-btn:hover {
+  background: var(--navy, #1D2475); color: #fff;
+  border-color: var(--navy, #1D2475);
+}
+.notion-btn:hover svg { stroke: #fff; }
+.notion-btn svg { flex-shrink: 0; }
+
+/* ── 학업 성취도 편집 모드 ── */
+.grade-edit-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
+.grade-edit-row {
+  display: flex; align-items: center; gap: 8px;
+}
+.grade-edit-input {
+  border: 1.5px solid var(--border, #e0e4ea); border-radius: 8px;
+  padding: 7px 10px; font-size: 0.84rem; font-family: inherit;
+  outline: none; transition: border-color 0.15s;
+}
+.grade-edit-input:focus { border-color: var(--navy, #1D2475); }
+.grade-edit-input.name { flex: 2; }
+.grade-edit-input.grade { flex: 1; max-width: 70px; text-align: center; }
+.grade-delete-btn {
+  background: none; border: none; cursor: pointer;
+  color: #b0b0b0; font-size: 0.85rem; padding: 4px 6px;
+  border-radius: 4px; transition: all 0.15s;
+}
+.grade-delete-btn:hover { color: #dc2626; background: #fee2e2; }
+.grade-add-btn {
+  width: 100%; padding: 8px; background: none;
+  border: 1.5px dashed var(--border, #e0e4ea); border-radius: 8px;
+  font-size: 0.82rem; font-weight: 600; color: var(--text-sub, #6b7280);
+  cursor: pointer; font-family: inherit; transition: all 0.15s;
+  margin-bottom: 10px;
+}
+.grade-add-btn:hover { border-color: var(--navy, #1D2475); color: var(--navy, #1D2475); }
+.grade-edit-actions { display: flex; gap: 8px; }
+.grade-save-btn {
+  flex: 1; padding: 8px; background: var(--navy, #1D2475); color: #fff;
+  border: none; border-radius: 8px; font-size: 0.84rem; font-weight: 600;
+  cursor: pointer; font-family: inherit; transition: opacity 0.15s;
+}
+.grade-save-btn:hover { opacity: 0.85; }
+.grade-cancel-btn {
+  flex: 1; padding: 8px; background: none; color: var(--text-sub, #6b7280);
+  border: 1.5px solid var(--border, #e0e4ea); border-radius: 8px;
+  font-size: 0.84rem; font-weight: 600; cursor: pointer; font-family: inherit;
+  transition: all 0.15s;
+}
+.grade-cancel-btn:hover { border-color: #999; color: var(--text, #1a1a2e); }

@@ -120,7 +120,7 @@ export default function DashboardPage({ onNavigate }) {
           <span className="sum-arrow">→</span>
         </div>
         <div className="sum-card" data-nav="academic" onClick={() => onNavigate('academic')}>
-          <h3>중요 학업 정보</h3>
+          <h3>학업 정보</h3>
           <ul className="sum-list">
             <li><span className="dot blue" /><span className="sum-date">진행중</span>머신러닝 프로젝트 (60%)</li>
             <li><span className="dot blue" /><span className="sum-date">시험</span>운영체제 (4일 남음)</li>
