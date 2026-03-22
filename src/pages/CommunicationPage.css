@@ -1,0 +1,78 @@
+.comm-view { background: #fff; }
+
+.comm-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.comm-card {
+  background: #fff;
+  border: 2px solid #1B3A5C;
+  border-radius: 16px;
+  padding: 22px 20px;
+}
+.comm-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e8edf3;
+}
+.comm-card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1B3A5C;
+}
+.comm-unread-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: #1B3A5C;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.comm-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.comm-item {
+  padding: 12px 14px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #e8edf3;
+  border-left: 3px solid transparent;
+}
+.comm-item.unread {
+  background: #f0f4ff;
+  border-left-color: #1B3A5C;
+}
+.comm-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+.comm-sender {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+.comm-time {
+  font-size: 0.72rem;
+  color: #aaa;
+}
+.comm-text {
+  font-size: 0.82rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+@media (max-width: 860px) {
+  .comm-section { grid-template-columns: 1fr; }
+}

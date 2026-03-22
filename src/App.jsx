@@ -4,6 +4,9 @@ import DashboardPage from './pages/DashboardPage'
 import SchedulePage from './pages/SchedulePage'
 import AcademicPage from './pages/AcademicPage'
 import AdminPage from './pages/AdminPage'
+import ProjectPage from './pages/ProjectPage'
+import CareerPage from './pages/CareerPage'
+import CommunicationPage from './pages/CommunicationPage'
 
 export default function App() {
   const [view, setView] = useState('landing')
@@ -14,6 +17,9 @@ export default function App() {
     schedule: <SchedulePage onBack={() => setView('dashboard')} />,
     academic: <AcademicPage onBack={() => setView('dashboard')} />,
     admin: <AdminPage onBack={() => setView('dashboard')} />,
+    project: <ProjectPage onBack={() => setView('dashboard')} />,
+    career: <CareerPage onBack={() => setView('dashboard')} />,
+    communication: <CommunicationPage onBack={() => setView('dashboard')} />,
   }
 
   return pages[view] || pages.landing

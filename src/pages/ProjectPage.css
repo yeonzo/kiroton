@@ -1,0 +1,162 @@
+/* ── 프로젝트 페이지 ── */
+.project-view {
+  background: #ffffff;
+}
+
+.project-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.project-card {
+  background: #fff;
+  border: 2px solid #1B3A5C;
+  border-radius: 16px;
+  padding: 22px 20px;
+}
+
+.project-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.project-card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1B3A5C;
+  letter-spacing: -0.3px;
+}
+
+.project-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 12px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+.tag-active { background: #e8f5e9; color: #2e7d32; }
+.tag-urgent { background: #fff3e0; color: #e65100; }
+.tag-upcoming { background: #e3f2fd; color: #1565c0; }
+
+.project-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: #6b7280;
+  margin-bottom: 14px;
+}
+
+.project-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.project-progress-bar {
+  flex: 1;
+  height: 7px;
+  background: #e8edf3;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.project-progress-fill {
+  height: 100%;
+  background: #1B3A5C;
+  border-radius: 4px;
+  transition: width 0.3s;
+}
+.project-progress-text {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #1B3A5C;
+  min-width: 36px;
+  text-align: right;
+}
+
+.project-divider {
+  border-top: 1px solid #e8edf3;
+  margin-bottom: 14px;
+}
+
+.project-task-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.project-task-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.84rem;
+  color: #1a1a2e;
+  padding: 8px 12px;
+  background: #f8fafc;
+  border-radius: 10px;
+  border: 1px solid #e8edf3;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.project-task-item:hover {
+  background: #eef2f7;
+}
+.project-task-item.done {
+  color: #aaa;
+  text-decoration: line-through;
+}
+
+.project-task-check {
+  font-size: 0.88rem;
+  color: #1B3A5C;
+  width: 18px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.project-task-item.done .project-task-check {
+  color: #aaa;
+}
+
+/* ── Google Drive 연동 버튼 ── */
+.drive-link-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 14px;
+  padding: 10px;
+  background: none;
+  color: #1B3A5C;
+  border: 1.5px solid #1B3A5C;
+  border-radius: 10px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.drive-link-btn:hover {
+  background: #1B3A5C;
+  color: #fff;
+}
+.drive-link-btn:hover .drive-icon {
+  stroke: #fff;
+}
+.drive-icon {
+  flex-shrink: 0;
+  transition: stroke 0.15s;
+}
+
+/* ── 반응형 ── */
+@media (max-width: 860px) {
+  .project-section {
+    grid-template-columns: 1fr;
+  }
+}
